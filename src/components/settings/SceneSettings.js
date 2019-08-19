@@ -1,67 +1,64 @@
-import React from "react"
+import React from "react";
 
-class SceneSettings extends React.Component{
-    render(){
-        return(
-            <div className="settings-panel">
-             <h4 className="mb-3">Scene Settings</h4>
-
-                <div className="setting-group">
-
-                    <label>Title</label>
-                    <div className="input-group mb-3">
-                        <input type="text" className="form-control" aria-label="Text input with checkbox" />
-                    </div>
-
-                    <label>Description</label>
-                    <div className="input-group mb-3">
-                        <textarea type="text" className="form-control" aria-label="Text input with checkbox" />
-                    </div>
-
-                    <label>Author</label>
-                    <div className="input-group mb-3">
-                        <input type="text" className="form-control" aria-label="Text input with checkbox" />
-                    </div>
-
-                    <label>Copyright</label>
-                    <div className="input-group mb-3">
-                        <input type="text" className="form-control" aria-label="Text input with checkbox" />
-                    </div>
-
-                    <label>Source</label>
-                    <div className="input-group mb-3">
-                        <input type="text" className="form-control" aria-label="Text input with checkbox" />
-                    </div>
-
-                </div>
-
-                <div className="setting-group">
-
-                    <label>Latitude</label>
-                    <div className="input-group mb-3">
-                        <input type="text" className="form-control" aria-label="Text input with checkbox" />
-                    </div>
-
-                    <label>Longitude</label>
-                    <div className="input-group mb-3">
-                        <input type="text" className="form-control" aria-label="Text input with checkbox" />
-                    </div>
-
-                    <label>Altitude</label>
-                    <div className="input-group mb-3">
-                        <input type="text" className="form-control" aria-label="Text input with checkbox" />
-                    </div>
-
-                    <label>North</label>
-                    <div className="input-group mb-3">
-                        <input type="text" className="form-control" aria-label="Text input with checkbox" />
-                    </div>
-
-                </div>
-
-            </div>
-        )
+const settings = {
+  header: "Scene Settings",
+  settings: [
+    {
+      label: "Title",
+      type: "text"
+    },
+    {
+      label: "Description",
+      type: "textbox"
+    },
+    {
+      label: "Author",
+      type: "text"
+    },
+    {
+      label: "Copyright",
+      type: "text"
     }
+  ]
+};
+
+class SceneSettings extends React.Component {
+  renderHeader() {
+    return <h4 className="mb-3">{settings.header}</h4>;
+  }
+  renderSettings() {
+    let sectInput = undefined;
+
+    return settings.settings.map((sect, index) => {
+      if (sect.type === "text") {
+        sectInput = (
+          <input
+            type="text"
+            className="form-control"
+            aria-describedby="Settings input"
+          />
+        );
+      } else {
+        sectInput = <textarea class="form-control" rows="3" />;
+      }
+
+      return (
+        <div className="form-group" key={`group-${index}`}>
+          <label for="exampleInputEmail1">{sect.label}</label>
+          {sectInput}
+        </div>
+      );
+    });
+  }
+
+  render() {
+    return (
+      <div className="settings-panel">
+        {this.renderHeader()}
+        <form>{this.renderSettings()}</form>
+      </div>
+    );
+  }
 }
 
-export default SceneSettings
+export default SceneSettings;
