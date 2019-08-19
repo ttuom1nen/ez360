@@ -1,0 +1,105 @@
+html{
+    height: 100%
+}
+
+body{
+    height: 100%;
+}
+
+#root{
+    height: 100%;
+}
+
+.App{
+    height: 100%;
+    overflow: hidden;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.navbar{
+    border-bottom: 1px solid silver;
+}
+
+.editor-main{
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 25fr 4fr;
+}
+
+.sidebar{
+    overflow: auto;
+    resize: horizontal;
+    width: 25%;
+    height: 100%;
+    max-width: 700px;
+    min-width: 400px;
+    border-right: 1px solid silver;
+}
+
+.sidebar-content{
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.sidebar-content .settings-panel label{
+    color: #3e3e3e;
+}
+
+.sidebar-content .setting-group{
+    border: 1px solid #e6e6e6;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 6px;
+}
+
+.sidebar-content label{
+    color: #7d7d7d;
+    font-size: 11pt;
+}
+
+.editor-area {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+}
+
+.bottomBar{
+    padding: 8px;
+    border-top: 1px solid silver;
+}
+
+.scene-thumbnail{
+    cursor: pointer;
+    display: inline-block;
+    margin: 2px;
+    max-width: 200px;
+    min-width: 180px;
+    max-height: 200px;
+    min-height: 150px;
+    width: 10%;
+    border: 1px solid silver;
+    border-radius: 3px;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+
+.scene-thumbnail:hover{
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.thumbnail-image{
+    height: auto;
+    min-height: 70px;
+    background-color: darkgray;
+}
+
+.thumbnail-image img{
+    width: 100%;
+}
+
+.thumbnail-body{
+    padding: 4px;
+    text-align: center;
+}
