@@ -1,4 +1,5 @@
 import React from "react";
+import withSettings from "./withSettings";
 
 const settings = {
   header: "Scene Settings",
@@ -23,42 +24,14 @@ const settings = {
 };
 
 class SceneSettings extends React.Component {
-  renderHeader() {
-    return <h4 className="mb-3">{settings.header}</h4>;
-  }
-  renderSettings() {
-    let sectInput = undefined;
-
-    return settings.settings.map((sect, index) => {
-      if (sect.type === "text") {
-        sectInput = (
-          <input
-            type="text"
-            className="form-control"
-            aria-describedby="Settings input"
-          />
-        );
-      } else {
-        sectInput = <textarea class="form-control" rows="3" />;
-      }
-
-      return (
-        <div className="form-group" key={`group-${index}`}>
-          <label for="exampleInputEmail1">{sect.label}</label>
-          {sectInput}
-        </div>
-      );
-    });
-  }
-
   render() {
     return (
       <div className="settings-panel">
-        {this.renderHeader()}
-        <form>{this.renderSettings()}</form>
+        {this.props.renderHeader()}
+        <form>{this.props.renderSettings()}</form>
       </div>
     );
   }
 }
 
-export default SceneSettings;
+export default withSettings(SceneSettings, settings);
