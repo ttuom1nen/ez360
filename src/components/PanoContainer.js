@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 
 const PanoContainer = () => {
-    return <div id="pano-container"></div>
-}
+  return <div id="pano-container" />;
+};
 
-export default PanoContainer
+export default PanoContainer;
