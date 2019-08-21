@@ -1,25 +1,46 @@
 import React from "react";
 import SceneThumbnail from "./SceneThumbnail";
-import { changeScene } from "../test";
-import { initSceneList } from "../test";
+import { connect } from "react-redux";
+import { selectScene } from "../actions";
 
-const renderList = list => {
-  const pickScene = sceneObj => {
-    //changeScene(sceneObj);
+class SceneList extends React.Component {
+  pickScene = sceneObj => {
+    this.props.selectScene(sceneObj);
     console.log(sceneObj);
     let { pitch, yaw, hfov } = sceneObj.config;
     window.editor.player.loadScene(sceneObj.config.title, pitch, yaw, hfov);
   };
 
-  const listItems = list.map(item => (
-    <SceneThumbnail item={item} pickScene={pickScene} key={item.id} />
-  ));
+  renderThumbnails = () => {
+    return this.props.scenes.map(item => {
+      return (
+        <SceneThumbnail item={item} pickScene={this.pickScene} key={item.id} />
+      );
+    });
+  };
+  /*
+  listItems = this.props.scenes.map(item => (
+    <SceneThumbnail item={item} pickScene={this.pickScene} key={item.id} />
+  ));*/
 
-  return <div className="scenelist">{listItems}</div>;
-};
+  render() {
+    return <div className="scenelist">{this.renderThumbnails()}</div>;
+  }
+}
 
+/*
 const SceneList = props => {
   return renderList(props.sceneList);
+};*/
+
+/* Map redux store to props to use data in component */
+const mapStateToProps = state => {
+  return { scenes: state.scenes };
 };
 
-export default SceneList;
+export default connect(
+  mapStateToProps,
+  {
+    selectScene
+  }
+)(SceneList);
