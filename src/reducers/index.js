@@ -14,6 +14,7 @@ const scenesReducer = () => {
         thumbnail: "assets/equi/default_thumb.jpg",
         showControls: false,
         autoLoad: true,
+        doubleClickZoom: false,
         hotSpots: []
       }
     },
@@ -29,6 +30,7 @@ const scenesReducer = () => {
         thumbnail: "assets/equi/office_thumb.jpg",
         showControls: false,
         autoLoad: true,
+        doubleClickZoom: false,
         hotSpots: []
       }
     },
@@ -44,6 +46,7 @@ const scenesReducer = () => {
         thumbnail: "assets/equi/office2_thumb.jpg",
         showControls: false,
         autoLoad: true,
+        doubleClickZoom: false,
         hotSpots: []
       }
     }

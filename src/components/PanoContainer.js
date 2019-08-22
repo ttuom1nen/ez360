@@ -1,14 +1,14 @@
 import React from "react";
 
 const hsconfig = {
-  pitch: 14.1,
-  yaw: 1.5,
+  pitch: 0,
+  yaw: 0,
   type: "info",
   cssClass: "custom-hotspot",
   createTooltipFunc: hotspot,
   createTooltipArgs: "Test Hotspot",
   clickHandlerFunc: hsClick,
-  clickHandlerArgs: { message: "test hs click" }
+  clickHandlerArgs: true
 };
 
 function hsClick(args) {
@@ -34,7 +34,10 @@ const createHotspot = evt => {
   hsconfig.pitch = coords[0];
   hsconfig.yaw = coords[1];
 
-  window.editor.player.addHotSpot(hsconfig, window.editor.player.getScene());
+  window.editor.player.addHotSpot(
+    Object.create(hsconfig),
+    window.editor.player.getScene()
+  );
 };
 
 const PanoContainer = () => {
